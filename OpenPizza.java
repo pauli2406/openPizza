@@ -14,7 +14,7 @@ public class OpenPizza {
             System.out.println("--------------------FILE " + file.getName());
             if (file.isFile()) {
                 List<Client> clients = new ArrayList<>();
-                List<String> content = new ArrayList();
+                List<String> content = new ArrayList<>();
                 try {
                     Scanner myReader = new Scanner(file);
                     while (myReader.hasNextLine()) {
