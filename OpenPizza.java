@@ -2,7 +2,6 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class OpenPizza {
     public static void main(String[] args) throws IOException {
@@ -28,6 +27,7 @@ public class OpenPizza {
                     e.printStackTrace();
                 }
 
+                content.remove(0);
                 for (int i = 0; i < content.size(); i=i+2) {
                     List<String> likeable = new LinkedList<>(Arrays.asList(content.get(i).split(" ")));
                     int amountLikeable = Integer.parseInt(likeable.get(0));
@@ -53,8 +53,8 @@ public class OpenPizza {
                 }
                 System.out.println(clients);
                 List<String> dislikedIngredientsList = new ArrayList<>();
-                for (int i = 0; i < clients.size(); i++) {
-                    dislikedIngredientsList.addAll(clients.get(i).unlikeable);
+                for (Client value : clients) {
+                    dislikedIngredientsList.addAll(value.unlikeable);
                 }
                 Set<String> dislikedIngredients = new HashSet<String>(dislikedIngredientsList);
                 List<String> listOfDislikedIngredients = new ArrayList<>(dislikedIngredients);
@@ -62,13 +62,15 @@ public class OpenPizza {
                 System.out.println(dislikedIngredients);
 
                 for (int i = 0; i < dislikedIngredients.size(); i++) {
-                    for (int j = 0; j < clients.size(); j++) {
-                        boolean containsUnlikedIngredient = !clients.get(j).likeable.contains(listOfDislikedIngredients.get(i));
+                    for (Client client : clients) {
+                        boolean containsUnlikedIngredient = !client.likeable.contains(listOfDislikedIngredients.get(i));
                     }
                 }
             }
         }
     }
+
+
 }
 
 
