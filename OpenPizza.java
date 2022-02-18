@@ -1,10 +1,9 @@
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.util.*;
 
 public class OpenPizza {
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
 
         File folder = new File("./inputs/");
         File[] listOfFiles = folder.listFiles();
@@ -56,7 +55,7 @@ public class OpenPizza {
                 for (Client value : clients) {
                     dislikedIngredientsList.addAll(value.unlikeable);
                 }
-                Set<String> dislikedIngredients = new HashSet<String>(dislikedIngredientsList);
+                Set<String> dislikedIngredients = new HashSet<>(dislikedIngredientsList);
                 List<String> listOfDislikedIngredients = new ArrayList<>(dislikedIngredients);
                 System.out.println("Disliked Ingredients");
                 System.out.println(dislikedIngredients);
@@ -69,11 +68,7 @@ public class OpenPizza {
             }
         }
     }
-
-
 }
-
-
 
 class Client {
     int amountOfIngredientsLikeable;
